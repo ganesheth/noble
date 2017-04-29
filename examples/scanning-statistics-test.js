@@ -2,6 +2,9 @@ var noble = require('../index');
 
 noble.on('stateChange', function(state) {
   if (state === 'poweredOn') {
+    process.argv.forEach(function (val, index, array) {
+      console.log(index + ': ' + val);
+    });
     //noble.startScanning();
     var serviceUUIDs = ["feaa"];// ["0000" + "FEAA" + "00001000800000805F9B34FB"]; // default: [] => all
     var allowDuplicates = true; // default: false
