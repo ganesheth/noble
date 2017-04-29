@@ -13,7 +13,7 @@ noble.on('stateChange', function(state) {
     //var t = process.argv[4];
     console.log("Scanning for " + serviceUUIDs[0] + " using ScanInterval=" + interval + " ScaWindow=" + window + " (cycle=" + (window/interval) + ")");
 	  N++;
-    noble.overrideScanParameters(0x10, 0x10, 0x01);
+    noble.overrideScanParameters(interval, window, 0x01);
     noble.startScanning(serviceUUIDs, allowDuplicates); // particular UUID's
     start = +new Date();
   } else {
