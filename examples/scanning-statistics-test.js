@@ -5,6 +5,9 @@ noble.on('stateChange', function(state) {
     //noble.startScanning();
     var serviceUUIDs = ["feaa"];// ["0000" + "FEAA" + "00001000800000805F9B34FB"]; // default: [] => all
     var allowDuplicates = true; // default: false
+    var dc = process.argv[0];
+    var w = process.argv[1];
+    console.log("Scanning for " + serviceUUIDs[0] + " using ScanWindow=" + w + " ScanDutyCylce=" + dc);
 	  N++;
     noble.overrideScanParameters(0x10, 0x10, 0x01);
     noble.startScanning(serviceUUIDs, allowDuplicates); // particular UUID's
