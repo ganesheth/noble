@@ -79,7 +79,7 @@ noble.on('discover', function(peripheral) {
 	noble.stopScanning();
 	avgTotal += (end - start);
 	var avg = avgTotal / N;
-	console.log("At " + N + " Avg=" + avg);
+	console.log("At " + N + "t=" +  (end -start) + "ms Avg=" + avg + "ms");
 	//console.log("Scanning stopped");
 	//console.log("Average interval = " + ((end-start)/count));
 	/*
