@@ -10,7 +10,8 @@ noble.on('stateChange', function(state) {
     var allowDuplicates = true; // default: false
     var interval = process.argv[2];
     var window = process.argv[3];
-    //var t = process.argv[4];
+    var type = process.argv[4];
+    expectedTags = process.argv[5];
     console.log("Scanning for " + serviceUUIDs[0] + " using ScanInterval=" + interval + " ScaWindow=" + window + " (cycle=" + (window/interval) + ")");
 	  N++;
     noble.overrideScanParameters(interval, window, 0x01);
@@ -26,6 +27,7 @@ var start;
 var devices = [];
 var N = 0;
 var avgTotal = 0;
+var expectedTags = 10;
 
 
 noble.on('discover', function(peripheral) {
