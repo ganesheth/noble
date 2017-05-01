@@ -12,7 +12,7 @@ noble.on('stateChange', function(state) {
     var window = process.argv[3];
     var type = process.argv[4];
     expectedTags = process.argv[5];
-    console.log("Scanning for " + serviceUUIDs[0] + " using ScanInterval=" + interval + " ScaWindow=" + window + " (cycle=" + (window/interval) + ")");
+    console.log("Scanning for " + serviceUUIDs[0] + " using ScanInterval=" + interval + " ScaWindow=" + window + " (cycle=" + (window/interval) + ") Expected tags=" + expectedTags);
 	  N++;
     noble.overrideScanParameters(interval, window, 0x01);
     noble.startScanning(serviceUUIDs, allowDuplicates); // particular UUID's
@@ -77,7 +77,7 @@ noble.on('discover', function(peripheral) {
   var end = +new Date();
   //console.log(count + "in time: " + (end-start) + " milliseconds. So far " + devices.length + " uniques");
   //console.log();
-  if(devices.length >= 9){
+  if(devices.length >= expectedTags){
 	noble.stopScanning();
 	avgTotal += (end - start);
 	var avg = avgTotal / N;
