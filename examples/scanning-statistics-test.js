@@ -24,6 +24,7 @@ var devices = [];
 var N = 0;
 var avgTotal = 0;
 var expectedTags = 10;
+var outlierCount = 0;
 
 
 noble.on('discover', function(peripheral) {
@@ -47,15 +48,16 @@ noble.on('discover', function(peripheral) {
     noble.stopScanning();
     var dt = (end - start);
     var rejected = false;
-    if(N > 4 && dt > (2 * avgTotal)){
+    if(N > 4 && dt > (2 * avg)){
       rejected = true;
+      outlierCount++;
     }
     else {
       avgTotal += dt;
       var avg = avgTotal / N;
       N++;
     }
-    console.log("At " + N + " t=" +  dt + "ms Avg=" + avg + "ms" + "outlier:" + rejected);   
+    console.log("At " + N + " t=" +  dt + "ms Avg=" + avg + "ms" + " outlier:" + rejected + "(" + outlierCount+ ")");   
     var serviceUUIDs = ["feaa"];// ["0000" + "FEAA" + "00001000800000805F9B34FB"]; // default: [] => all
     var allowDuplicates = true; // default: false
     noble.startScanning(serviceUUIDs, allowDuplicates); // particular UUID's
@@ -63,6 +65,8 @@ noble.on('discover', function(peripheral) {
     devices = [];
   }
 });
+
+//--------------------------------------------------------- OLD STUFF -----------------------------------------------------------------------------
     /*
     process.argv.forEach(function (val, index, array) {
       console.log(index + ': ' + val);
