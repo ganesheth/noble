@@ -47,7 +47,7 @@ noble.on('discover', function(peripheral) {
     noble.stopScanning();
     var dt = (end - start);
     var rejected = false;
-    if(N > 4 && dt > (2 * avgTotal){
+    if(N > 4 && dt > (2 * avgTotal)){
       rejected = true;
     }
     else {
