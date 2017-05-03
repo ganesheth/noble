@@ -25,6 +25,7 @@ var N = 0;
 var avgTotal = 0;
 var expectedTags = 10;
 var outlierCount = 0;
+var avg = 0;
 
 
 noble.on('discover', function(peripheral) {
@@ -54,7 +55,7 @@ noble.on('discover', function(peripheral) {
     }
     else {
       avgTotal += dt;
-      var avg = avgTotal / N;
+      avg = avgTotal / N;
       N++;
     }
     console.log("At " + N + " t=" +  dt + "ms Avg=" + avg + "ms" + " outlier:" + rejected + "(" + outlierCount+ ")");   
