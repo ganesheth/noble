@@ -2,8 +2,8 @@ var noble = require('../index');
 
 noble.on('stateChange', function(state) {
 
-  if(process.argv.length != 6){
-    Consol.log("Usage scanning-statistics-test.js <interval> <window> <type 0=passive 1=active> <expectedTags> <toleranceFactor>");
+  if(process.argv.length != 7){
+    Console.log("Usage scanning-statistics-test.js <interval> <window> <type 0=passive 1=active> <expectedTags> <toleranceFactor>");
     return;
   }
 
