@@ -57,7 +57,7 @@ noble.on('discover', function(peripheral) {
     noble.stopScanning();
     var dt = (end - start);
     var rejected = false;
-    if(N > 4 && dt > (2 * avg)){
+    if(N > 4 && dt > (toleranceFactor * avg)){
       rejected = true;
       outlierCount++;
     }
