@@ -3,12 +3,12 @@ var noble = require('../index');
 noble.on('stateChange', function(state) {
 
   if(process.argv.length != 7){
-    console.log("Usage scanning-statistics-test.js <interval> <window> <type 0=passive 1=active> <expectedTags> <toleranceFactor>");
+    console.log("Usage scanning-statistics-test.js <scan interval> <scan duration> <type 0=passive 1=active> <expectedTags> <toleranceFactor>");
     return;
   }
 
   if (state === 'poweredOn') {
-    var serviceUUIDs = ["feaa"];// ["0000" + "FEAA" + "00001000800000805F9B34FB"]; // default: [] => all
+    var serviceUUIDs = ["1801"];// ["0000" + "FEAA" + "00001000800000805F9B34FB"]; // default: [] => all
     var allowDuplicates = false; // default: false
     var interval = process.argv[2];
     var window = process.argv[3];
@@ -38,7 +38,7 @@ var toleranceFactor = 5;
 
 noble.on('discover', function(peripheral) {
   if(count == 0){
-	start = +new Date();
+	  start = +new Date();
   }
   count++;
 
